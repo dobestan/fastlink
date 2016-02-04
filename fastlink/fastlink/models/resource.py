@@ -35,7 +35,7 @@ class Resource(models.Model):
         verbose_name_plural = verbose_name
 
     def __str__(self):
-        return self.url
+        return self.get_shorten_url()
 
     def get_absolute_url(self):
         from django.core.urlresolvers import reverse
@@ -50,3 +50,8 @@ class Resource(models.Model):
 
         self.hash_id = get_encoded_hashid(self)
         self.save()
+
+    def get_shorten_url(self):
+        return "https://r.fastcamp.us/{hash_id}".format(
+            hash_id=self.hash_id,
+        )

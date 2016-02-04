@@ -5,4 +5,4 @@ class FastlinkAppConfig(AppConfig):
     name = 'fastlink'
 
     def ready(self):
-        pass
+        from .signals.post_save import post_save_resource

@@ -15,6 +15,13 @@ class Resource(models.Model):
         'Course',
     )
 
+    hash_id = models.CharField(
+        max_length=8,
+        blank=True,
+        null=True,
+        unique=True,
+    )
+
     url = models.URLField(
         verbose_name='URL',
     )
@@ -29,3 +36,9 @@ class Resource(models.Model):
 
     def __str__(self):
         return self.url
+
+    def _create_hash_id(self):
+        from fastlink.utils.hashids import get_encoded_hashid
+
+        self.hash_id = get_encoded_hashid(self)
+        self.save()

@@ -10,7 +10,7 @@ clean:
 
 # target: migrate - Migrate all django applications considering app dependencies
 migrate:
-	python fastlink/manage.py makemigrations
+	python fastlink/manage.py makemigrations fastlink
 	python fastlink/manage.py migrate
 
 

@@ -8,6 +8,8 @@ class ResourceModelAdmin(admin.ModelAdmin):
     list_display = admin.ModelAdmin.list_display + (
         'course',
 
+        'hash_id',
+
         'url',
         'description',
     )
@@ -22,9 +24,12 @@ class ResourceModelAdmin(admin.ModelAdmin):
     search_fields = (
         'course',
 
+        'hash_id',
+
         'url',
         'description',
     )
 
     readonly_fields = (
+        'hash_id',
     )

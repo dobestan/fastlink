@@ -37,6 +37,14 @@ class Resource(models.Model):
     def __str__(self):
         return self.url
 
+    def get_absolute_url(self):
+        from django.core.urlresolvers import reverse
+
+        return reverse(
+            'resource-redirect',
+            kwargs={'hash_id': self.hash_id, },
+        )
+
     def _create_hash_id(self):
         from fastlink.utils.hashids import get_encoded_hashid
 
